@@ -21,8 +21,9 @@ public class DataDarahHelper {
      public DataDarahHelper() {
 
     }
+     
 
-  public void addNewPasien(
+  public void addNewDataDarah(
       int idDarah,
      String golonganDarah,
      String resus,
@@ -38,6 +39,17 @@ public class DataDarahHelper {
            tx.commit();
            session.close();
   }
+  public List<DataDarah> bacaSemuaDataDarah() {
+        List<DataDarah> list = null;
+        Session session = NewHibernateUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
+        Query q = session.createQuery("from Pasien l");
+        list = q.list();
+        tx.commit();
+        session.close();
+        return list;
+
         
     }
+}
      
